@@ -1,14 +1,21 @@
+/* Declaramos la variable donde se almacenará el objeto reproductor del SDK de SoundCloud */
 var reproductor;
+/*Inicializamos los servicios del SDK de SoundCloud
+*/
 try{SC.initialize( {
     client_id: 'aa06b0630e34d6055f9c6f8beb8e02eb'
 } );
+
+/*Seleccionamos el elmento donde se hubica el intput y el boton "buscar" y le agregamos un listener que maneje
+**el evento. Se crea una tabla, de 5 columnas y tantas filas como multiplos de cinco hayan más uno en caso de resto, con
+**las imagenes de los objetos que recogemos del json que nos devuelve la petición.*/
+    
 document.querySelector( '.buscarCancion' ).addEventListener( 'submit', function ( event ) {
     event.preventDefault();
     SC.get( '/tracks', {
             q: event.target.busqueda.value
         } )
         .then( function ( res ) {
-            console.log( res )
         var numImages=5;
         var body=document.getElementsByTagName('body')[0];
         var rows = parseInt(res.length/numImages);
@@ -16,8 +23,8 @@ document.querySelector( '.buscarCancion' ).addEventListener( 'submit', function 
         
         var tbl=document.createElement('table');
         var tbdy=document.createElement('tbody');
-        let j= 0;
-        let i =0;
+        var j= 0;
+        var i =0;
         var tr;
          var td;
         let p;
@@ -30,15 +37,15 @@ document.querySelector( '.buscarCancion' ).addEventListener( 'submit', function 
                 td=document.createElement('td');
 
                 imagen.src = res[i].artwork_url;
-                console.log(imagen.src.length);
+                
                    if(imagen.src.length ==66){
-                      console.log("ENTRA");
+                      
                        imagen.src = "./NotFoundImage.png"
                    }
                 else{
-                    console.log("NO ENTRA");
+                    
                 }
-                console.log(res[i].artwork_url);
+               
                 imagen.id = res[i].id; 
                 imagen.draggable = "true";
                 imagen.setAttribute('class', 'imagen');
@@ -49,7 +56,7 @@ document.querySelector( '.buscarCancion' ).addEventListener( 'submit', function 
                 tr.appendChild(td);
                
             }
-            console.log("Valor de i despues del bucle  "+ i);
+            
             tbdy.appendChild(tr);
              
             j++;
@@ -57,11 +64,11 @@ document.querySelector( '.buscarCancion' ).addEventListener( 'submit', function 
         
         if(resto!==0){
           tr =  document.createElement('tr');
-             console.log("Añadida fila " + (j+1));
+            
             for(p =0; p<numImages;p++){
                 
                 td=document.createElement('td');
-                 console.log("Valor de i antes de resto "+ i);
+                 
                 if(p<resto){
                     imagen  = document.createElement( 'img' );
                      
@@ -90,37 +97,32 @@ document.querySelector( '.buscarCancion' ).addEventListener( 'submit', function 
            
         }
         tbl.appendChild(tbdy);
-        //body.appendChild(tbl);
+       
         
         document.querySelector( '.results' ).append( tbl);
-            //for ( i = 0; i < res.length; i++ ) {
-              //  const imagen = document.createElement( 'img' )
-                //imagen.src = res[i].artwork_url
-                //imagen.id = res[i].id; 
-                //imagen.draggable = "true";
-                //imagen.setAttribute('class', 'imagen');
-                //imagen.setAttribute('ondragstart','drag(event)')
-                //document.querySelector( '.results' ).append( imagen )
-               
-           // }
+      
         } )
 } )}
 catch(error){console.log(error);}
 
+/*Permite prevenir el comportamiento por defecto lo cual nos permite hacer el drop.
+*/
 function allowDrop(ev) {
-  ev.preventDefault(); // Permite prevenir el comportamiento por defecto lo cual nos permite hacer el drop.
+  ev.preventDefault(); 
 }
-
+/*Envio del id y del src.
+*/
 function drag(ev) {
- let Sid = ev.dataTransfer.setData("id", ev.target.id); // envio del id
+ let Sid = ev.dataTransfer.setData("id", ev.target.id); 
 let Ssrc = ev.dataTransfer.setData("src", ev.target.src);
     
 }
-
+/*Recogemos el id y añadimos un hijo al elemento objetivo y iniciamos el reproductor con la canción selecionada
+*/
 function drop(ev) {
  ev.preventDefault();
   var data = ev.dataTransfer.getData("id");
-    console.log(data);
+    
   ev.target.appendChild(document.getElementById(data));
      
   SC.stream('/tracks/'+data).then(function(player){
@@ -129,6 +131,8 @@ function drop(ev) {
 });
     
 }
+/*Recogemos el id y añadimos un hijo al elemento objetivo deteniendo la reproducción
+*/
 function drop2(ev){
     var elemento = ev.dataTransfer.getData("id");
     ev.target.appendChild(document.getElementById(elemento));
