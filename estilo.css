@@ -1,0 +1,138 @@
+  
+body{
+  background-color: rgb(43, 42, 42);
+}
+.cabecera{
+    background-image: linear-gradient(rgb(70, 70, 70),rgb(10,10,10));  
+    display: flex;
+    justify-content: center;
+    height: 15vh;
+    width: 100vw;
+    margin-bottom: 20px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+    border: 3px solid rgb(203, 34, 38);
+}
+.titulo{
+    color:rgb(203, 34, 38);
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 0.2em;
+}
+.texto{
+    color:white;
+   font-family: 'Permanent Marker', cursive;
+font-family: 'M PLUS 1p', sans-serif;
+    text-align: justify;
+    margin: 10px;
+    
+}
+
+
+.subtitulo{
+    display: flex;
+    justify-content: center;
+ }
+
+h3{
+     color:white;
+   font-family: 'Permanent Marker', cursive;
+font-family: 'M PLUS 1p', sans-serif;
+    text-decoration-line: underline;
+    text-decoration-color: rgb(203, 34, 38);
+    text-decoration-style: double;
+    margin: 32px;
+}
+
+
+
+.buscador{
+   display:flex; 
+    
+    width: 100%;
+    margin:20px;
+    
+    }
+.busqueda{
+     background-color: rgb(203, 34, 38);
+    color: white;
+    height: 5vh;
+    width: 20vw;
+    border-bottom-color: rgb(203, 34, 38);
+    /*border-radius: 3em;*/
+    margin-right: 30px;
+}
+.busqueda::placeholder{
+    color: white;
+    }
+.buscarCancion{
+    position: relative;
+}
+.miboton{
+    background-color: rgb(203, 34, 38);
+    padding: 3em, 3em; 
+    height: 5vh;
+    width: 10vw;
+    color: white;
+    
+}
+.miboton:hover{
+    background-color: white;
+    border: 2px solid rgb(203, 34, 38);
+    color :rgb(203, 34, 38);
+    font-weight: bold;
+}
+
+
+.contenedorPadre{
+   display: grid;
+   grid-template-columns: 50% 50%;
+    }
+.contenedor {
+    width:75%;
+    height:250px;
+    background-color: white;
+    border: 2px solid black;
+    
+    
+}
+
+.contenedor:hover{
+    border: 2px dashed black;
+}
+
+.botonera{
+    display: grid;
+     grid-template-rows: 50% 50%;
+   justify-content: center;
+    
+}
+
+
+.imagen{
+    margin-left: 20px;
+    height: 7vh;
+    width: 7vw;
+    
+}
+.imagen:hover{
+  transform: rotate(360deg);
+  transition-duration: 2s;
+  transition-timing-function: linear;
+  transition-delay: 0.5s;
+}
+
+.botones{
+     background-color: rgb(203, 34, 38);
+    padding: 3em, 3em; 
+    height: 10vh;
+    width: 25vw;
+    color: white;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.botones:hover{
+    background-color: white;
+    border: 2px solid rgb(203, 34, 38);
+    color :rgb(203, 34, 38);
+}

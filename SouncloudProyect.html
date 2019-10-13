@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+     <meta name="author" content="Javier Cervelló">
+    <link rel="stylesheet" type= "text/css" href="estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
+    <script src="./SC_script.js" async defer></script>
+</head>
+    <body>
+        <div class="cabecera"><h1 class="titulo"> Busca tu canción en SoundCloud</h1></div>
+        <div>
+        <p class= "texto">Bienvenido al reproductor de GeekHubs, la mision de este reproductor es ofrecerte la musica que deseas al momento y que yo su programador aprenda más sobre los lenguages de desarrollo Web como son HTML, CSS y JavaScript. El funcionamiento es el siguiente indica por texto que cancion deseas escuchar y haz click en realizar búsqueda. Seguidamente notaras que aparecen una serie de imágenes relacionadas con la clave que le indicas por texto. Arrastra la imagen que referencia a la cancion que buscas y llevala hasta el recuadro inferior. Si deseas parar o reanudar la reproduccion puedes hacer uso sin problemas de los botos play y pause de debajo del recuadro. Si por el contrario quieres dejar de reproducir por completo la cancion, arrastra su imagen de nuevo al banco de imagenes.</p>
+        </div>
+        <div  class="subtitulo">
+        <h3>¡¡¡Inicia ya tu búsqueda!!!</h3>
+        </div>
+               <div class="buscador">
+             <form class="buscarCancion">
+                <input class="busqueda" type="text" placeholder="Realiza una busqueda" name="busqueda">
+                <button class="miboton"  type="submit"> Buscar </button>
+                </form>
+                <div class="results" draggable="true" ondragstart="drag(event)" ondrop="drop2(event)" ondragover="allowDrop(event)"></div>
+            </div>
+      <div class="contenedorPadre">  <div class="contenedor" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+          <div class="botonera"> 
+            <button class="botones" onclick="play()">Play</button>
+            <button class="botones" onclick="pause()">Pause</button>
+        </div>
+        </div>
+        
+    </body>
+</html>
